@@ -1,0 +1,6 @@
+{
+  "posterior_predictive_chi_square_tail": 0.7233333333333334,
+  "median_residual_lag1": 0.009694795432247641,
+  "rms_ppm": 29.883863772610134,
+  "warning": "Fixed white-noise sigma estimated from local out-of-transit flux; no red-noise or detrending uncertainty model."
+}

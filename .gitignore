@@ -13,3 +13,8 @@ venv/
 .ipython/
 
 .DS_Store
+
+# Reproducible run arrays are local; keep manifests, diagnostics and figures.
+results/**/*_chain.npz
+results/**/*_samples.npy
+results/**/*_derived.npz
