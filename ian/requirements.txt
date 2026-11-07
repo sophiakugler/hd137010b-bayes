@@ -1,0 +1,7 @@
+batman-package
+emcee
+corner
+arviz
+h5py
+setuptools
+dynesty
