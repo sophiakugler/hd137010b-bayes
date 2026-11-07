@@ -64,7 +64,7 @@ PARAM_NAMES = ["T0", "lnP", "b", "lnk", "u1", "u2", "log_rho", "log_M", "f0", "l
 # Value = exponent x in p(lnP) ~ P^x.
 PERIOD_PRIORS = {
     "kipping": -2 / 3,                # alpha = 0    (uniform in P) -> p(P) ~ P^-5/3
-    "uniform_a_kipping": -4 / 3,      # alpha = -2/3 (uniform in a) -> p(P) ~ P^-7/3
+    "uniform_a_kipping": -1.0,        # alpha = -1/3 (uniform in a ~ P^(2/3)) -> p(P) ~ P^-2
     "loguniform_kipping": -5 / 3,     # alpha = -1   (log-uniform)  -> p(P) ~ P^-8/3  [paper, per authors' samples]
     "loguniform": 0.0,                # log-uniform, no single-transit correction
 }
