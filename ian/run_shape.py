@@ -41,7 +41,7 @@ p0 = np.column_stack([
 ])
 assert all(np.isfinite(model(p)) for p in p0)
 
-moves = [(emcee.moves.DEMove(), 0.8), (emcee.moves.DESnookerMove(), 0.2)]
+moves = emcee.moves.DEMove()
 sampler = emcee.EnsembleSampler(args.nwalkers, ndim, model, moves=moves)
 
 state, old_tau, tau_history = p0, np.inf, []
