@@ -13,3 +13,4 @@ venv/
 .ipython/
 
 .DS_Store
+notebooks/*_mcmc_chain.csv
