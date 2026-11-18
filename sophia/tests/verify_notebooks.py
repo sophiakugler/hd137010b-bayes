@@ -6,12 +6,12 @@ from jupyter_client import KernelManager
 
 ROOT=Path(__file__).resolve().parents[1]
 for name in ['04_eccentric_mcmc.ipynb','05_prior_sensitivity.ipynb']:
-    path=ROOT/'notebooks'/name
+    path=ROOT/name
     initial_hash=hashlib.sha256(path.read_bytes()).hexdigest()
     nb=nbformat.read(path,as_version=4)
     km=KernelManager(kernel_name='python3')
     km.kernel_spec.argv[0]=sys.executable
-    client=NotebookClient(nb,km=km,timeout=300,resources={'metadata':{'path':str(ROOT/'notebooks')}})
+    client=NotebookClient(nb,km=km,timeout=300,resources={'metadata':{'path':str(ROOT)}})
     try:
         client.execute()
     finally:
