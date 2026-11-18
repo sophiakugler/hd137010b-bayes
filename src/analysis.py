@@ -198,7 +198,8 @@ def make_outputs(runs,out,seed):
             vals=d[key]; bins=np.geomspace(max(vals.min()*.9,1e-4),vals.max()*1.1,80)
             ax.hist(vals,bins=bins,density=True,histtype='step',color=color,label=names[kind],lw=1.5)
             ax.set_xscale('log')
-    for ax,label in zip(axs,['Period [d]','Semi-major axis [AU]','Orbit-mean flux [Earth]']):
+    for ax,label,title in zip(axs,['Period [d]','Semi-major axis [AU]','Orbit-mean flux [Earth]'],['Orbital period','Semi-major axis','Average stellar flux']):
+        ax.set_title(title)
         ax.set_xlabel(label); ax.set_ylabel('Density')
         ax.xaxis.set_minor_formatter(NullFormatter())
     for ax,ticks in zip(axs,[[100,300,1000],[.4,.7,1,2],[.03,.1,.3,1,3]]):
@@ -211,6 +212,7 @@ def make_outputs(runs,out,seed):
         dur=np.array([duration(x) for x in prior])
         plt.hist(dur,bins=np.linspace(0,40,100),weights=np.ones(len(dur))/len(dur)/(40/99),histtype='step',label=kind,color=color)
     plt.axvline(9.76,color='black',ls='--',label='Published duration')
+    plt.title('Prior-predictive transit durations')
     plt.xlabel('Approximate first-to-fourth contact duration [h]');plt.ylabel('Density (display restricted to 0–40 h)');plt.legend()
     savefig(out,'prior_predictive_duration')
     # Compare circular ECDF on complete support, not a truncated histogram.
@@ -222,6 +224,7 @@ def make_outputs(runs,out,seed):
     for vals,label in [(ref,'Venner supplied samples'),(ours,'New circular run')]:
         v=np.sort(vals);plt.plot(v,np.arange(1,len(v)+1)/len(v),label=label)
     plt.xscale('log');plt.xlabel('Period [d]');plt.ylabel('Empirical cumulative probability');plt.legend()
+    plt.title('Circular fit compared with supplied posterior samples')
     savefig(out,'circular_validation')
     validation=dict(reference_quantiles=quantiles(ref),new_quantiles=quantiles(ours),ks_distance=float(ks_2samp(ref,ours).statistic),wasserstein_days=float(wasserstein_distance(ref,ours)),warning='Distances are descriptive; do not interpret iid KS p-values for correlated MCMC samples. This is an approximate reproduction, not identical noise/detrending/selection modelling.')
     (out/'validation.json').write_text(json.dumps(validation,indent=2))
@@ -234,7 +237,8 @@ def make_outputs(runs,out,seed):
         hours=(post.t-TREF)*24
         lo,hi=np.percentile(curves,[2.5,97.5],axis=0)
         ax.plot(hours,(post.flux-1)*1e6,'.',color='.5'); ax.fill_between(hours,(lo-1)*1e6,(hi-1)*1e6,alpha=.3);ax.plot(hours,(med-1)*1e6)
-        ax.set_ylabel('Flux relative to unity [ppm]');ax.set_title(kind+' posterior model band (95%; excludes measurement noise)')
+        names={'circular':'Circular','lowe':'Low eccentricity','uniform':'Broad eccentricity'}
+        ax.set_ylabel('Flux relative to unity [ppm]');ax.set_title(names[kind]+' model: transit fit (95% model band)')
         residual=(post.flux-med)/post.sigma
         ar.plot(hours,residual,'.');ar.axhline(0,color='k',lw=.5);ar.set_ylabel('Residual / sigma');ar.set_xlabel('Time from reference transit [h]')
         savefig(out,f'{kind}_model_check')
@@ -248,7 +252,7 @@ def make_outputs(runs,out,seed):
         flat=runs['uniform'][0]
         e=physical['uniform']['eccentricity']; p=physical['uniform']['period_days']
         plt.figure(figsize=(8,4));sel=rng.choice(len(flat),min(12000,len(flat)),replace=False)
-        plt.scatter(p[sel],e[sel],c=flat[sel,1],s=2,alpha=.25,cmap='viridis');plt.xscale('log');plt.colorbar(label='Impact parameter b');plt.xlabel('Period [d]');plt.ylabel('Eccentricity');savefig(out,'period_eccentricity')
+        plt.scatter(p[sel],e[sel],c=flat[sel,1],s=2,alpha=.25,cmap='viridis');plt.xscale('log');plt.colorbar(label='Impact parameter b');plt.xlabel('Period [d]');plt.ylabel('Eccentricity');plt.title('Broad-prior solutions: period and eccentricity');savefig(out,'period_eccentricity')
         post=runs['uniform'][3];grid=Transit(np.linspace(TREF-.35,TREF+.35,450))
         # Select real high-posterior samples from distinct period quantile bands.
         scores=np.array([post(x) for x in flat[sel]])
@@ -261,7 +265,7 @@ def make_outputs(runs,out,seed):
             model=grid(x)+np.mean(post.flux-post.model(x))
             ax.plot((grid.t-TREF)*24,(model-1)*1e6,label=f'P={p[idx]:.0f} d, e={e[idx]:.2f}, b={x[1]:.2f}')
             examples.append(dict(zip(['P','b','radius_ratio','t0','rho','u1','u2','e','omega_radians'],map(float,unpack(x)))))
-        ax.set_xlabel('Time from reference transit [h]');ax.set_ylabel('Flux [ppm]');ax.legend(fontsize=8);savefig(out,'representative_transits')
+        ax.set_xlabel('Time from reference transit [h]');ax.set_ylabel('Flux [ppm]');ax.set_title('Different orbital solutions, similar transits');ax.legend(fontsize=8);savefig(out,'representative_transits')
         (out/'representative_transits.json').write_text(json.dumps(examples,indent=2))
     (out/'summary.json').write_text(json.dumps(summaries,indent=2))
     rows=['model,quantity,q16,q50,q84']
