@@ -1,0 +1,41 @@
+{
+  "tau": [
+    195.9167606571887,
+    141.70128013935587,
+    155.47679048144417,
+    46.402717241076594,
+    47.017042349172584,
+    48.80339504845994,
+    47.86451720518252
+  ],
+  "approx_ess": [
+    6380.260656653187,
+    8821.374081946822,
+    8039.785206070258,
+    26938.077645450372,
+    26586.1044749872,
+    25612.972186848823,
+    26115.378844031387
+  ],
+  "split_rhat_descriptive": [
+    1.0104063537742827,
+    1.005893129457527,
+    1.0074072342225473,
+    1.0019587946007442,
+    1.001813004318003,
+    1.0021354954304311,
+    1.001913024347328
+  ],
+  "retained_steps": 25000,
+  "acceptance_mean": 0.20245440000000003,
+  "convergence_screen_passed": true,
+  "warning": "Ensemble walkers interact; this Rhat is not an independent-chain convergence proof. Run independent ensembles and longer chains for final inference.",
+  "model": "circular",
+  "move": "de_snooker",
+  "seed": 137010,
+  "walkers": 50,
+  "steps": 50000,
+  "sigma_flux": 3.26435036872614e-05,
+  "pmax": 2000.0,
+  "initial_positions_seed": 137010
+}

@@ -14,3 +14,8 @@ venv/
 
 .DS_Store
 notebooks/*_mcmc_chain.csv
+
+# Reproducible run arrays are local; keep manifests, diagnostics and figures.
+results/**/*_chain.npz
+results/**/*_samples.npy
+results/**/*_derived.npz
