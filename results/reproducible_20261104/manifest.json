@@ -1,0 +1,38 @@
+{
+  "arguments": {
+    "steps": 20000,
+    "walkers": 48,
+    "seed": 137010,
+    "pmax": 2000,
+    "output": "results\\reproducible_20261104"
+  },
+  "parameter_order": [
+    "ln P",
+    "b",
+    "ln radius ratio",
+    "t0 offset [d]",
+    "log10 density",
+    "u1",
+    "u2",
+    "sqrt(e) cos(w)",
+    "sqrt(e) sin(w)"
+  ],
+  "time_reference_BJD": 2458055.0969,
+  "period_bounds_days": [
+    90,
+    2000
+  ],
+  "eccentricity_max": 0.8,
+  "conditioning": "Priors specified for the observed transiting candidate; no additional e,omega transit-probability weight. Not an intrinsic population model.",
+  "versions": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "emcee": "3.1.6",
+    "batman": "2.5.1"
+  },
+  "inputs": {
+    "apjladf06ft3_mrt.txt": "edda2b8e646b8cf1429071b5076f7187676f67d22dd42c701069064328221b72",
+    "posteriors.csv": "1a33b973724da2a86cd52872f7ad11cde17d05eaca7311d1d43a7582358120ce",
+    "analysis.py": "8e38830b20e5b630d02ebd0d0cedd94a1bed47831d599a281a49979e77e0dbb3"
+  }
+}

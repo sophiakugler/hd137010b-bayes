@@ -1,0 +1,80 @@
+{
+  "arguments": {
+    "steps": 20000,
+    "walkers": 48,
+    "seed": 137010,
+    "pmax": 2000,
+    "output": "results\\reproducible_20261104"
+  },
+  "parameter_order": [
+    "ln P",
+    "b",
+    "ln radius ratio",
+    "t0 offset [d]",
+    "log10 density",
+    "u1",
+    "u2",
+    "sqrt(e) cos(w)",
+    "sqrt(e) sin(w)"
+  ],
+  "time_reference_BJD": 2458055.0969,
+  "period_bounds_days": [
+    90,
+    2000
+  ],
+  "eccentricity_max": 0.8,
+  "conditioning": "Priors specified for the observed transiting candidate; no additional e,omega transit-probability weight. Not an intrinsic population model.",
+  "versions": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "emcee": "3.1.6",
+    "batman": "2.5.1"
+  },
+  "inputs": {
+    "apjladf06ft3_mrt.txt": "edda2b8e646b8cf1429071b5076f7187676f67d22dd42c701069064328221b72",
+    "posteriors.csv": "1a33b973724da2a86cd52872f7ad11cde17d05eaca7311d1d43a7582358120ce",
+    "analysis.py": "8e38830b20e5b630d02ebd0d0cedd94a1bed47831d599a281a49979e77e0dbb3"
+  },
+  "continuation_from": "results\\reproducible_20261104",
+  "max_total_steps": 120000,
+  "stopping": "At least 60000 total steps; retained half must exceed 50 estimated autocorrelation times in every coordinate and descriptive split Rhat < 1.05. Stop at 120000 and disclose failure if not met.",
+  "moves": "80% StretchMove + 20% DEMove during continuation",
+  "final_source_hashes": {
+    "src\\analysis.py": "c1a58514a1a46d6e04b1368b6a398747224d054d4df7d0288aeafa86a3795955",
+    "src\\refine.py": "3dadeedc3deaef76f7b7cdeca6833431f47b5827bfb44be65d8bc385014c77d7"
+  },
+  "source_note": "Parameter-column metadata and plot presentation were refined after launch; the posterior target was unchanged.",
+  "parameter_order_by_model": {
+    "circular": [
+      "ln P",
+      "b",
+      "ln radius ratio",
+      "t0 offset [d]",
+      "log10 density",
+      "u1",
+      "u2"
+    ],
+    "lowe": [
+      "ln P",
+      "b",
+      "ln radius ratio",
+      "t0 offset [d]",
+      "log10 density",
+      "u1",
+      "u2",
+      "sqrt(e) cos(w)",
+      "sqrt(e) sin(w)"
+    ],
+    "uniform": [
+      "ln P",
+      "b",
+      "ln radius ratio",
+      "t0 offset [d]",
+      "log10 density",
+      "u1",
+      "u2",
+      "sqrt(e) cos(w)",
+      "sqrt(e) sin(w)"
+    ]
+  }
+}
