@@ -1,0 +1,64 @@
+
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,
+top=2.2cm,
+bottom=2.2cm,
+left=2.5cm,
+right=2.5cm]{geometry}
+
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\setstretch{1.05}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\begin{document}
+
+\begin{center}
+
+{\Large \textbf{The Role of Orbital Priors in a Single-Transit Event}}\\[0.15cm]
+
+
+\textbf{Bayesian Statistics, HS 2026}\\[0.2cm]
+
+\textbf{Group Members:} Nicolas Volken, Ian Röthlisberger, Denis Titov, Sophia Kugler
+
+\end{center}
+
+\section*{Motivation}
+
+HD 137010 b is a quite recently (beginning of 2026) discovered Earth-sized exoplanet candidate for which so far only one transit has been observed. Assuming negligible orbital eccentricity ($\epsilon = 0$), the paper by A. Venner et al. (see References) estimates an orbital period of approx. 355 days. In this case, the exoplanet would lie close to the outer edge of the habitable zone and would be a candidate for a possible Earth-like planet. But with only one observed transit, parameters such as the orbital period, eccentricity or impact parameter are very much degenerate.
+The goal of our project is to look at how strongly the inferred orbital properties of HD 137010 b depend on the assumed priors.
+
+\section*{Data and Statistical Method}
+We will use the publicly available K2 (from the extended Kepler mission) photometry data of the transit.
+We plan to construct a probabilistic transit model and infer orbital parameters using Markov Chain Monte Carlo (MCMC). We will compare different assumptions for the eccentricity, for example a circular orbit with models allowing non-zero eccentricity under different prior distributions.
+The main interest will be the posterior distribution of the orbital period and derived quantities such as the semi-major axis and incident stellar flux.
+
+
+\section*{Model Evaluation}
+
+We will compare the posterior distributions obtained under different prior assumptions and investigate parameter degeneracies and prior sensitivity. MCMC convergence analysis and posterior predictive checks will be used to assess the reliability of the inferred models.
+
+This will allow us to evaluate how robust the claim of an approximately Earth-like orbit is when the circular-orbit assumption is relaxed.
+
+\section*{Planned Workflow}
+
+\begin{enumerate}
+    \item Retrieve the K2 light curve.
+    \item Construct the transit model and define different orbital priors.
+    \item Sample the posterior distributions using MCMC.
+    \item Compare the inferred orbital periods and parameter degeneracies.
+    \item Perform convergence analysis and posterior predictive checks.
+\end{enumerate}
+
+\section*{Reference}
+
+A. Venner et al. (2026), \textit{A Cool Earth-sized Planet Candidate Transiting a Tenth Magnitude K-dwarf From K2}, ApJL.\\
+\url{https://arxiv.org/abs/2601.19870}
+
+\end{document}
+```

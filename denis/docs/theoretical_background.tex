@@ -1,0 +1,78 @@
+\subsection{Exoplanet Detection: Transit Method}
+
+There are many ways to detect exoplanets. The most used method however is the transit method. 
+When a planet moves in front of a star, the brightness we measure gets, to first order, reduced by a factor proportional to:
+\begin{equation}
+    \Delta I \sim \frac{R_p^2}{R_s^2}
+    \label{intensity}
+\end{equation}
+
+
+where $R_p$ and $R_s$ are the planetary and stellar radii, respectively \cite{exoplanet_script}. Thus, a transit light curve directly constrains the planet-to-star radius ratio. For HD~137010~b, the observed depth is only $225\pm10$ ppm, corresponding to an approximately Earth-sized planet with $R_p = 1.06^{+0.06}_{-0.05}\,R_\oplus$ \cite{venner2026}.
+
+Not every planetary system is oriented such that a transit is visible. For a circular orbit, the approximate transit probability is
+
+\begin{equation}
+    p_{\mathrm{trans}}
+    \approx
+    \frac{R_s}{a},
+    \label{eq:transit_probability}
+\end{equation}
+
+where $a$ is the semi-major axis \cite{exoplanet_script}. Transit surveys are therefore geometrically biased towards planets orbiting close to their host stars. For long-period planets, transits are both less likely and also occur less often.
+
+The duration of a central transit on a circular orbit can approximately be written as
+
+\begin{equation}
+    T_D
+    \approx
+    \frac{P}{2\pi a}\,2R_*,
+    \label{eq:transit_duration}
+\end{equation}
+
+where $P$ is the orbital period \cite{exoplanet_script}. Together with Kepler's third law,
+
+\begin{equation}
+    \frac{a^3}{P^2}
+    =
+    \frac{G M_*}{4\pi^2},
+    \label{eq:kepler}
+\end{equation}
+
+the transit duration therefore contains information about the orbital period if the stellar properties are known.
+
+For a single transit, however, this inference is highly degenerate. A non-central transit crosses a shorter distance across the stellar disk, introducing a dependence on the impact parameter $b$. In addition, for an eccentric orbit the orbital velocity at the time of transit depends on both eccentricity $e$ and argument of periastron $\omega$. The transit geometry contains the factor
+
+\begin{equation}
+    \frac{1-e^2}{1+e\sin\omega},
+    \label{eq:eccentric_correction}
+\end{equation}
+
+such that different combinations of $P$, $b$, $e$, and $\omega$ can produce very similar transit durations. This degeneracy is the main motivation for our analysis: we investigate how strongly the inferred orbital period of HD~137010~b depends on the prior assumptions made about its eccentricity.
+
+
+\subsection{Host Star}
+copied from wikipedia:
+Host Star (HD 137010)
+
+• Star Type: K-type main-sequence dwarf (K3.5V)
+• Mass & Radius: ~73% of the Sun's mass and ~71% of its radius
+• Temperature: ~4,770 K (about 1,000 K cooler than the Sun)
+• Stellar Flux: Receives roughly 29% of the light and heat Earth gets}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/exoplanet.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/hoststar.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+https://exoplanet.eu/catalog/hd_137010_b--11844/
+
+\subsection{MCMC}
+
+\subsection{more bay stat theory as this is not a project on astrophysics but on bayesian statistics}
