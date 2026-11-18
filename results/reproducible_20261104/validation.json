@@ -1,0 +1,15 @@
+{
+  "reference_quantiles": [
+    295.73383082603925,
+    354.74547614580695,
+    542.4732380552962
+  ],
+  "new_quantiles": [
+    301.65278894645434,
+    376.6336386652721,
+    670.7581005444085
+  ],
+  "ks_distance": 0.09501500000000007,
+  "wasserstein_days": 57.851046699704774,
+  "warning": "Distances are descriptive; do not interpret iid KS p-values for correlated MCMC samples. This is an approximate reproduction, not identical noise/detrending/selection modelling."
+}
