@@ -5,4 +5,4 @@ K-dwarf hosting an Earth-sized planet candidate.
 
 Nicolas Volken, Ian Röthlisberger, Denis Titov, Sophia Kugler
 
-Overleaf Project: https://www.overleaf.com/project/6ac3cd66241d124eca2719ff
+Overleaf Project: https://www.overleaf.com/project/6acf34e287704edad40bbd7f
