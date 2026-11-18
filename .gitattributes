@@ -1,0 +1,5 @@
+# Notebooks are stored as code: outputs and execution counts are stripped on the
+# way into git, so they diff cleanly and everyone can re-run them. Install the
+# filter once per clone with scripts/setup-notebooks.sh; without it this line is
+# inert and notebooks are stored as-is.
+*.ipynb filter=nbstripout diff=ipynb
