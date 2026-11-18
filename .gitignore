@@ -19,3 +19,6 @@ notebooks/*_mcmc_chain.csv
 results/**/*_chain.npz
 results/**/*_samples.npy
 results/**/*_derived.npz
+
+# Local run output: bay.run writes chains here, they are not committed.
+output/

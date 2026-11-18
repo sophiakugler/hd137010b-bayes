@@ -35,9 +35,10 @@ class Posterior:
 
 
 def _sample(sampler, state, n, report, phase):
-    """sampler.run_mcmc, reporting every quarter."""
+    """sampler.run_mcmc, reporting about every percent so a bar can move."""
+    every = max(n // 100, 1)
     for i, _ in enumerate(sampler.sample(state, iterations=n), 1):
-        if i % max(n // 4, 1) == 0 or i == n:
+        if i % every == 0 or i == n:
             report(f"{phase} {i}/{n}")
 
 
